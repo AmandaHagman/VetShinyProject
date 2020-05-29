@@ -1,0 +1,38 @@
+---
+title: "VetShinyProject"
+author: "Amanda Hagman"
+date: "5/28/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(DT)
+library(tidyverse)
+library(janitor)
+library(furniture)
+```
+
+```{r}
+d <- read.csv("C:/Users/A00344356/Box/Center for Student Analytics/Program Evaluation Services/Veterans - Tony Flores/practice data for shiny ap.csv") %>% 
+  clean_names() %>% 
+  filter(admit_term > 201000) %>% 
+  select(anumber, last_name, first_name, gender, residency, vet_type, benefit_code, admit_term, class_rank, overall_earned_hours, overall_gpa,
+         site, campus, primary_degree, primary_college, academic_standing, academic_standing_description) 
+  
+
+#your task is to create a variable that reflects applications and USU students
+#cross check these variables against Center for Student Analytics/All Students/all students by term.csv
+#check for duplicates in original file
+#Follow your N same N between d and the allstudents
+  
+
+summary(d)
+table(d$admit_term)
+```
+```{r}
+datatable(d)
+```
+
